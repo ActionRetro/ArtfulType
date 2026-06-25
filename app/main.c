@@ -2513,7 +2513,17 @@ static void EventLoop(void)
 #define kSplashImageHeight 100
 #define kSplashImageRowBytes (kSplashImageWidth / 8)
 
-static const unsigned char kSplashImageBits[kSplashImageHeight * kSplashImageRowBytes] = {
+/*
+    CopyBits below reads this bitmap's rows in word/longword-sized
+    chunks internally. A plain `unsigned char[]` only guarantees
+    1-byte alignment by C's own rules, so the linker is free to place
+    it at an odd address -- harmless on a 68020+ (and apparently on
+    Mini vMac's CPU emulation, which never caught this), but a real
+    68000 raises an Address Error immediately on any misaligned
+    word/long access. Confirmed live: this exact crash, at startup,
+    on a real Mac Plus, on both disk images -- not a guess.
+*/
+static const unsigned char kSplashImageBits[kSplashImageHeight * kSplashImageRowBytes] __attribute__((aligned(4))) = {
 #include "splash_image.h"
 };
 
