@@ -1,0 +1,24 @@
+Creative Assets License
+========================
+
+The source code of ArtfulType is licensed under the GNU General
+Public License v3 (see LICENSE).
+
+The following are NOT covered by that license, and are instead all
+rights reserved by Sean Malseed (Action Retro):
+
+- The "ArtfulType" name and any associated branding
+- The application icon (artful.png, and its compiled form embedded
+  in app/main.r)
+- The splash screen artwork (type.png, and its compiled form embedded
+  in app/main.c)
+- Screenshots and other promotional images (e.g. screenshot1.png)
+
+You may not redistribute, modify, or reuse these assets, or use the
+"ArtfulType" name for a derivative project, without permission.
+
+This applies even though some of this artwork's compiled data is
+physically embedded within GPLv3-licensed source files -- a practical
+necessity of how classic Mac OS resources are built, not a statement
+about the artwork's own licensing. Forks and derivative works should
+replace this artwork and naming with their own.

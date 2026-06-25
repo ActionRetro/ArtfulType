@@ -61,7 +61,9 @@ Built with [Retro68](https://github.com/autc04/Retro68), a GCC-based cross-compi
 
 ## License
 
-GPLv3 — see [LICENSE](LICENSE).
+Code: GPLv3 — see [LICENSE](LICENSE).
+
+Creative assets (the ArtfulType name/branding, icon, and artwork): all rights reserved — see [ASSETS_LICENSE](ASSETS_LICENSE).
 
 ## AI Disclaimer
 
