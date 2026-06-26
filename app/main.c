@@ -87,7 +87,7 @@ static void MakeMenu(void)
        Cmd-Shift-Z for Redo is instead handled directly in EventLoop,
        intercepted before MenuKey ever sees it. */
     gEditMenu = NewMenu(mEdit, "\pEdit");
-    AppendMenu(gEditMenu, "\pUndo/Z;Redo;(-;Cut/X;Copy/C;Paste/V");
+    AppendMenu(gEditMenu, "\pUndo/Z;Redo;(-;Cut/X;Copy/C;Paste/V;(-;Select All/A");
     InsertMenu(gEditMenu, 0);
     DisableItem(gEditMenu, iUndo);
     DisableItem(gEditMenu, iRedo);
@@ -174,11 +174,12 @@ static void DoMenuCommand(long menuResult)
         }
     } else if (menuID == mEdit) {
         switch (menuItem) {
-            case iUndo:  DoUndo(); break;
-            case iRedo:  DoRedo(); break;
-            case iCut:   DoCut(); break;
-            case iCopy:  DoCopy(); break;
-            case iPaste: DoPaste(); break;
+            case iUndo:      DoUndo(); break;
+            case iRedo:      DoRedo(); break;
+            case iCut:       DoCut(); break;
+            case iCopy:      DoCopy(); break;
+            case iPaste:     DoPaste(); break;
+            case iSelectAll: DoSelectAll(); break;
         }
     } else if (menuID == mStyle) {
         gDirty = true;

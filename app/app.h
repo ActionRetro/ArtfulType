@@ -37,6 +37,7 @@
 #define iCut     4
 #define iCopy    5
 #define iPaste   6
+#define iSelectAll 8
 
 #define mStyle   129
 #define iBold    1
@@ -181,6 +182,7 @@ void DoRedo(void);
 void DoCut(void);
 void DoCopy(void);
 void DoPaste(void);
+void DoSelectAll(void);
 
 /* zoom.c */
 short CurrentFontSize(void);

@@ -277,3 +277,9 @@ void DoPaste(void)
     gTypingRunActive = false;
     AdjustScrollbar();
 }
+
+void DoSelectAll(void)
+{
+    TESetSelect(0, 32767, gActiveTE);
+    gTypingRunActive = false;
+}
