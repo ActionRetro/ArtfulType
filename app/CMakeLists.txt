@@ -9,6 +9,12 @@ project(ArtfulType C)
 
 add_application(ArtfulType
     main.c
+    scrolling.c
+    markdown.c
+    undo.c
+    zoom.c
+    file.c
+    splash.c
     main.r
     CREATOR "ArtT"
     )
