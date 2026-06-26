@@ -81,6 +81,14 @@ void BuildHiddenView(void)
     short k;
     Rect savedViewRect;
 
+    /* Parsing the whole document and applying one TESetStyle call per
+       styled span is, on real 68000 hardware, slow enough on a long,
+       heavily-styled document to look like the app has hung. A watch
+       cursor doesn't make it faster, but it stops it from looking
+       broken -- the actual fix for the underlying slowness (lazy/
+       incremental styling) is a much bigger, riskier change. */
+    SetCursor(*GetCursor(watchCursor));
+
     opCount = 0;
     gLinkCount = 0;
     srcH = (**gTE).hText;
@@ -269,6 +277,8 @@ void BuildHiddenView(void)
     TESetSelect(0, 0, gHiddenTE);
 
     RestoreDrawing(gHiddenTE, &savedViewRect);
+
+    InitCursor();
 }
 
 /*
@@ -291,6 +301,13 @@ void SyncHiddenToCanonical(void)
     Rect savedViewRect;
     long urlSpace;
     short li;
+
+    /* Same reasoning as the watch cursor in BuildHiddenView -- this is
+       the reverse direction, called on save, mode switch, and (more
+       frequently) at the start of every typing run via PushUndoSnapshot/
+       PushRedoSnapshot, so a long, heavily-styled document can make it
+       pause noticeably mid-typing too. */
+    SetCursor(*GetCursor(watchCursor));
 
     srcH = (**gHiddenTE).hText;
     len = (**gHiddenTE).teLength;
@@ -420,6 +437,8 @@ void SyncHiddenToCanonical(void)
     ClearStyles();
 
     RestoreDrawing(gTE, &savedViewRect);
+
+    InitCursor();
 }
 
 /*
